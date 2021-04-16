@@ -32,6 +32,7 @@ final class Hydrator
         foreach ($this->data as $key => $value) {
             $this->populateData($key, $value);
         }
+
         return $this->object;
     }
 
@@ -42,11 +43,11 @@ final class Hydrator
      */
     private function populateData(string $key, $value)
     {
-        if (!property_exists($this->object, $key)) {
+        if (! property_exists($this->object, $key)) {
             return;
         }
 
-        if(!$this->isPublic($key)) {
+        if (! $this->isPublic($key)) {
             throw HydratorException::cannotPopulateNonPublicProperty($key);
         }
 
@@ -76,7 +77,7 @@ final class Hydrator
         }
 
         if ($dataType === 'bool') {
-            return !empty($value);
+            return ! empty($value);
         }
 
         if ($dataType === 'float') {
@@ -91,6 +92,7 @@ final class Hydrator
         $reflection = new \ReflectionObject($this->object);
         $property = $reflection->getProperty($key);
         $property->setAccessible(true);
+
         return $property->isPublic();
     }
 
@@ -101,21 +103,24 @@ final class Hydrator
         if (is_null($property->getType())) {
             return '';
         }
+
         return ($property->getType())->getName();
     }
 
     private function hasCustomFormat(string $key): bool
     {
         $method = 'format' . ucfirst($key);
-        if (!method_exists($this->object, $method)) {
+        if (! method_exists($this->object, $method)) {
             return false;
         }
+
         return true;
     }
 
     private function customFormat(string $key, $value)
     {
         $method = 'format' . ucfirst($key);
+
         return $this->object->{$method}($value);
     }
 }
