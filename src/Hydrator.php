@@ -117,6 +117,6 @@ final class Hydrator
 
     private function methodNameFormat(string $propertyName): string
     {
-        return sprintf('format%s', $propertyName);
+        return sprintf('format%s', ucfirst($propertyName));
     }
 }
