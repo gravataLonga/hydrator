@@ -10,7 +10,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Hydrator is a library that can help you populate an Data Object property from array.  
+Hydrator is a library that can help you populate an Data Object properties from array.  
 
 ## Structure
 

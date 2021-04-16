@@ -50,9 +50,7 @@ final class Hydrator
             throw HydratorException::cannotPopulateNonPublicProperty($key);
         }
 
-        $value = $this->formatValue($key, $value);
-
-        $this->object->{$key} = $value;
+        $this->object->{$key} = $this->formatValue($key, $value);
     }
 
     private function formatValue(string $key, $value)
@@ -106,16 +104,16 @@ final class Hydrator
 
     private function hasCustomFormat(string $key): bool
     {
-        $method = 'format' . ucfirst($key);
-        if (!method_exists($this->object, $method)) {
-            return false;
-        }
-        return true;
+        return method_exists($this->object, $this->methodNameFormat($key));
     }
 
     private function customFormat(string $key, $value)
     {
-        $method = 'format' . ucfirst($key);
-        return $this->object->{$method}($value);
+        return $this->object->{$this->methodNameFormat($key)}($value);
+    }
+
+    private function methodNameFormat(string $propertyName): string
+    {
+        return sprintf('format%s', $propertyName);
     }
 }
