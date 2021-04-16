@@ -54,7 +54,6 @@ class TraitHydratorTest extends TestCase
         $this->assertEquals($expected, $sut->intProperty);
     }
 
-
     /**
      * @test
      * @dataProvider dataProviderFormatValueToStr
@@ -128,7 +127,7 @@ class TraitHydratorTest extends TestCase
             [null, false],
             [false, false],
             ['1', true],
-            [1, true]
+            [1, true],
         ];
     }
 
@@ -140,7 +139,7 @@ class TraitHydratorTest extends TestCase
             [2, 2.0],
             [null, 0],
             ['', 0],
-            ['2.5', 2.5]
+            ['2.5', 2.5],
         ];
     }
 
@@ -151,7 +150,7 @@ class TraitHydratorTest extends TestCase
             ['', 0],
             ['1', 1],
             ['0.1', 0],
-            [100, 100]
+            [100, 100],
         ];
     }
 
@@ -161,7 +160,7 @@ class TraitHydratorTest extends TestCase
             [0, '0'],
             ['1', '1'],
             ['', ''],
-            [null, null]
+            [null, null],
         ];
     }
 }
