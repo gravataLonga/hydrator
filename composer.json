@@ -32,7 +32,7 @@
     },
     "scripts": {
         "phpstan": "phpstan analyze -l max src",
-        "fix-style": "php-cs-fixer src tests",
+        "fix-style": "php-cs-fixer fix",
         "test": "XDEBUG_MODE=coverage phpunit"
     }
 }
