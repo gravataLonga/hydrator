@@ -185,7 +185,10 @@ class Sut implements HydrableInterface
 
     public $propertyMixed;
 
-    public \DateTime $propertyWithDataType;
+    /**
+     * @var \DateTime|\DateTimeImmutable
+     */
+    public \DateTimeInterface $propertyWithDataType;
 
     public $propertyCustomFormat;
 

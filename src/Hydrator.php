@@ -9,6 +9,9 @@ namespace Gravatalonga\Hydrator;
  */
 final class Hydrator
 {
+    /**
+     * @var array array<string, mixed>
+     */
     private array $data;
 
     private object $object;
@@ -16,7 +19,7 @@ final class Hydrator
     /**
      * Hydrate constructor
      *
-     * @param array $data
+     * @param array array<string, mixed> $data
      */
     public function __construct(array $data)
     {
